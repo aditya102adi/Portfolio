@@ -17,7 +17,7 @@
         --color-white: hsl(252, 30%, var(--white-color-lightness));
         --color-light: hsl(252, 30%, var(--light-color-lightness));
         --color-gray: hsl(252, 15%, 65%);
-        --color-primary: #7f00ff;
+        --color-primary: hsl(var(--primary-color-hue), 75%, 60%);
         --color-dark: hsl(252, 30%, var(--dark-color-lightness));
 
         /*========== Font and typography ==========*/
@@ -51,28 +51,26 @@
         /*========== Box shadow ==========*/
         --box-shadow: 0px 5px 20px 0px rgba(69, 67, 96, 0.1);
     }
-    /*========== Responsive Typography ==========*/
-   @media screen and (max-width:992px) 
-   {
-    :root
-    {
-        --h1-font-size: 1.75rem;
-        --h2-font-size: 1.5rem;
-        --h3-font-size: 1rem;
-        --normal-font-size: .938rem;
-        --small-font-size: .813rem;
-    }
-   }
 
-     
+    /*========== Responsive Typography ==========*/
+    @media screen and (max-width:992px) {
+        :root {
+            --h1-font-size: 1.75rem;
+            --h2-font-size: 1.5rem;
+            --h3-font-size: 1rem;
+            --normal-font-size: .938rem;
+            --small-font-size: .813rem;
+        }
+    }
+
     /*========== Base ==========*/
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
-    html
-    {
+
+    html {
         scroll-behavior: smooth;
     }
 
@@ -137,7 +135,7 @@
 
     /*========== Reusable CSS classes ==========*/
     .section .container {
-        padding-top: 3.75rem;
+        padding-top: 3.90rem;
         padding-bottom: 4.75rem;
     }
 
@@ -162,7 +160,7 @@
         font-size: 16px;
         font-weight: 800;
         text-transform: uppercase !important;
-        background-image: linear-gradient(90deg, #ff6008 0%, #7f00ff 100%);
+        background: var(--color-primary);
         padding-top: 15px !important;
         padding-right: 35px !important;
         padding-bottom: 15px !important;
@@ -197,6 +195,17 @@
         animation-duration: 0.3s;
         animation-timing-function: linear;
         animation-iteration-count: 1;
+    }
+    /*========== Scroll effect ==========*/
+    ::-webkit-scrollbar
+    {
+        width: 0.6rem;
+        background: var(--color-white);
+    }
+    ::-webkit-scrollbar-thumb
+    {
+        background: var(--color-primary);
+        border-radius: .5rem;
     }
 
     /*========== Header ==========*/
@@ -253,11 +262,11 @@
     .nav-link:hover {
         color: var(--color-primary);
     }
-    .nav-close
-    {
+
+    .nav-close {
         font-size: 1rem;
         position: absolute;
-        top:1rem;
+        top: 1rem;
         right: 1.25rem;
         cursor: pointer;
     }
@@ -277,7 +286,8 @@
         font-size: 1.2rem;
         cursor: pointer;
     }
-    .nav-close, 
+
+    .nav-close,
     .nav-toggle {
         display: none;
     }
@@ -296,9 +306,9 @@
         background-color: var(--color-primary);
         border-radius: 50%;
     }
-    .scroll-header
-    {
-        box-shadow: 0 1px 4px rgba(165, 125,125,0.02);
+
+    .scroll-header {
+        box-shadow: 0 1px 4px rgba(165, 125, 125, 0.02);
     }
 
     /*========== Home ==========*/
@@ -336,7 +346,7 @@
     }
 
     .intro img {
-        width: 70%;
+        width: 60%;
     }
 
     .social-icons li a:hover i {
@@ -417,7 +427,7 @@
     }
 
     .rounded {
-        background-color: #fff;
+        background-color: var(--color-white);
         padding: var(--card-padding);
         border-radius: var(--border-radius);
 
@@ -426,7 +436,6 @@
     .about-text p {
         text-align: justify;
         margin-bottom: var(--m-1);
-
     }
 
     .about-content .skills .skill-item {
@@ -471,9 +480,18 @@
         text-align: center;
     }
 
-    .fact-item i {
+    .fact-item i{
         font-size: var(--h2-font-size);
         color: var(--color-gray);
+    }
+    .fact-item h3
+    {
+        margin-top: 15px;
+    }
+    .fact-item h3,
+    .fact-item p
+    {
+        color: var(--color-dark);
     }
 
     /*========== Experience ==========*/
@@ -516,7 +534,7 @@
         position: absolute;
         height: 100%;
         left: var(--m-0-5);
-        background-color: #FF6709;
+        background-color: var(--color-primary);
         top: 0;
     }
 
@@ -526,7 +544,7 @@
         top: 0;
         font-size: 1.5rem;
         background-color: var(--color-white);
-        color: #FF6709;
+        color: var(--color-primary);
     }
 
     .timeline .timeline-date {
@@ -744,7 +762,7 @@
         background: hsl(202, 75%, 60%);
     }
 
-    .customize-theme .choose-color span.active-link {
+    .customize-theme .choose-color span.active {
         border: 5px solid #fff;
     }
 
@@ -774,8 +792,10 @@
     }
 
     .customize-theme .choose-bg .bg-1 {
-        background: var(--color-light);
-        color: var(--color-dark);
+        background: hsl(252, 30%, 92%);
+        color: hsl(252, 30%, 17%);
+
+
     }
 
     .customize-theme .choose-bg .bg-2 {
@@ -797,126 +817,126 @@
 
     /*========== Media Queries ==========*/
     @media only screen and (max-width:1200px) {
-        .customize-theme .card
-        {
+        .customize-theme .card {
             width: 50vw;
         }
     }
 
     @media only screen and (max-width:968px) {
+
         .about-content,
-        .about-img
-        {
+        .about-img {
             flex: 0 0 100%;
             max-width: 100%;
         }
-        .about-img
-        {
+
+        .about-img {
             text-align: center;
             margin-bottom: var(--m-2-5);
         }
-        .customize-theme .card
-        {
+
+        .customize-theme .card {
             width: 58vw;
         }
     }
-    @media only screen  and (max-width:768px) {
-        body
-        {
+
+    @media only screen and (max-width:768px) {
+        body {
             margin: var(--header-height) 0 0 0;
         }
-        .container
-        {
+
+        .container {
             max-width: 568px;
         }
-        .nav
-        {
+
+        .nav {
             height: var(--header-height);
         }
-        .nav-list{
+
+        .nav-list {
             flex-direction: column;
             row-gap: 1.5rem;
         }
-        .nav-menu
-        {
+
+        .nav-menu {
             position: fixed;
             background: var(--color-white);
             width: 80%;
             height: 100%;
-            top:0;
+            top: 0;
             right: -100%;
             padding: 4rem 0 0 3rem;
             border-radius: 1rem 0 0 1rem;
             z-index: 100;
             transition: .3s;
         }
-        .show-menu
-        {
+
+        .show-menu {
             right: 0;
         }
+
         .nav-close,
-        .nav-toggle
-        {
+        .nav-toggle {
             display: inline-flex;
         }
+
         .education,
         .experience,
         .about-content .about-text,
-        .about-content .skills
-        {
+        .about-content .skills {
             flex: 0 0 100%;
             max-width: 100%;
         }
-        .fact-item, 
-        .blog-item
-        {
+
+        .fact-item,
+        .blog-item {
             flex: 0 0 50%;
             max-width: 50%;
         }
-        .about-content .about-text
-        {
+
+        .about-content .about-text {
             margin-bottom: var(--m-1-5)
         }
+
         .blog-item,
-        .education
-        {
+        .education {
             margin-bottom: var(--m-2-5);
         }
-        .customize-theme .card
-        {
+
+        .customize-theme .card {
             width: 75vw;
         }
-        
+
     }
+
     @media only screen and (max-width:576px) {
-        .blog-item
-        {
-            flex:0 0 100%;
-            max-width: 100%; 
+        .blog-item {
+            flex: 0 0 100%;
+            max-width: 100%;
         }
-        .blog-item .inner
-        {
+
+        .blog-item .inner {
             max-width: 380px;
             margin: 0 auto;
         }
-        .timeline
-        {
+
+        .timeline {
             padding: 25px 20px;
         }
-        .timeline .timeline-item{
+
+        .timeline .timeline-item {
             padding: 25px 20px;
-        } 
-        .customize-theme .card
-        {
+        }
+
+        .customize-theme .card {
             width: 96vw;
             padding: 1 rem;
         }
     }
 
     @media only screen and (max-width:320px) {
-        .fact-item
-        {
+        .fact-item {
             flex: 0 0 100%;
-            max-width:  100%;
+            max-width: 100%;
         }
     }
